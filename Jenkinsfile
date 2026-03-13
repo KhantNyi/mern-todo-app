@@ -9,6 +9,12 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 dir('TODO/todo_backend') {
                     sh 'npm install'
