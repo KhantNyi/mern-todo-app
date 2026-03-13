@@ -22,9 +22,7 @@ pipeline {
 
         stage('Containerise') {
             steps {
-                script {
-                    docker.build("${env.IMAGE_REPOSITORY}:${env.IMAGE_TAG}", "-f ${env.DOCKERFILE_PATH} .")
-                }
+                sh 'docker build -t ${IMAGE_REPOSITORY}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .'
             }
         }
 
