@@ -12,14 +12,18 @@ app.use(express.static(path.join(__dirname, "static/build")));
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/TODO';
 const PORT = process.env.PORT || 5000;
 
-console.log('Connecting to MongoDB...',MONGODB_URI  );
-mongoose.connect(MONGODB_URI,
-    console.log('MongoDB connected')
-)
+console.log('Connecting to MongoDB...', MONGODB_URI);
+mongoose.connect(MONGODB_URI)
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+  });
 
-app.listen(PORT,
-    console.log('Server listening on port: 5000')
-)
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
 
 app.post('/add', (req, res) => {
   const { task } = req.body;

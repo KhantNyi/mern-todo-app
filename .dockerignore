@@ -1,0 +1,15 @@
+.git
+.gitignore
+.DS_Store
+
+**/.DS_Store
+**/node_modules
+**/npm-debug.log*
+**/build
+**/dist
+**/.env
+**/.env.*
+**/coverage
+
+TODO/todo_backend/static/build
+Final
